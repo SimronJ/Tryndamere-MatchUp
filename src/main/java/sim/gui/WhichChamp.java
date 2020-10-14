@@ -229,11 +229,11 @@ public class WhichChamp
 			case 3:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
 			case 4:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
 			case 5:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
-//			case 6:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
-//			case 7:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
-//			case 8:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
 
 			default: 
+				if(s.equals("ChoGath")) {
+					if(tempch[0].equals("Cho' Gath")) {returnch = allRows.get(i); System.out.println("Found! " + tempch[0]);}
+				}
 				if(s.length() >= 6)
 				{
 					if (s.subSequence(0, 4).equals(tempch[0].subSequence(0, 4)))

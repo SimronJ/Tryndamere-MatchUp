@@ -70,14 +70,14 @@ public class ChampSelect
 									System.out.println(player.cellId + "Team:" + player.team + " Ally Champ:"
 											+ whichChamp.champname(player.championId));
 
-									if (player.team == 1)
-									{
+//									if (player.team == 1)
+//									{
 										if (tempchamp != player.championId)
 										{
 											getandsetchamps.getAllyarray().add(player.championId);
 											tempchamp = player.championId;
 										}
-									}
+//									}
 								});
 								getandsetchamps.jlabelUpdate(0);
 								getandsetchamps.getAllyarray().clear();
@@ -88,14 +88,14 @@ public class ChampSelect
 								{
 									System.out.println(player.cellId + "Team:" + player.team + " Enemy Champ:"
 											+ whichChamp.champname(player.championId));
-									if (player.team == 2)
-									{
+//									if (player.team == 2)
+//									{
 										if (tempchamp2 != player.championId)
 										{
 											getandsetchamps.getEnemyarray().add(player.championId);
 											tempchamp2 = player.championId;
 										}
-									}
+//									}
 								});
 								getandsetchamps.jlabelUpdate(1);
 								getandsetchamps.getEnemyarray().clear();

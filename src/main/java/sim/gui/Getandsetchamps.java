@@ -130,6 +130,45 @@ public class Getandsetchamps extends Expertimentgui
 		return enemyarray;
 	}
 	
+	public void resetBTN(int champ)
+	{
+		getgJLabels().clear();
+		getgJLabels().add(0, lblAllyPlayer1);
+		getgJLabels().add(1, lblAllyPlayer2);
+		getgJLabels().add(2, lblAllyPlayer3);
+		getgJLabels().add(3, lblAllyPlayer4);
+		getgJLabels().add(4, lblAllyPlayer5);
+		
+		getgJLabels2().clear();
+		getgJLabels2().add(0, lblEnemyPlayer1);
+		getgJLabels2().add(1, lblEnemyPlayer2);
+		getgJLabels2().add(2, lblEnemyPlayer3);
+		getgJLabels2().add(3, lblEnemyPlayer4);
+		getgJLabels2().add(4, lblEnemyPlayer5);
+		
+		for (int i = 0; i < 5; i++)
+		{
+			getgJLabels().get(i).removeAll();
+			getgJLabels().get(i).revalidate();
+			getgJLabels().get(i).repaint();
+			getgJLabels().get(i).setName(whichChamp.champname(champ));
+			getgJLabels().get(i)
+					.setIcon(new ImageIcon(new javax.swing.ImageIcon(
+							getClass().getResource("/sim/resources/champs/" + whichChamp.champname(champ) + ".png"))
+									.getImage().getScaledInstance(getImginewh(), getImginewh(), Image.SCALE_SMOOTH)));
+			
+			getgJLabels2().get(i).removeAll();
+			getgJLabels2().get(i).revalidate();
+			getgJLabels2().get(i).repaint();
+			getgJLabels2().get(i).setName(whichChamp.champname(champ));
+			getgJLabels2().get(i)
+					.setIcon(new ImageIcon(new javax.swing.ImageIcon(
+							getClass().getResource("/sim/resources/champs/" + whichChamp.champname(champ) + ".png"))
+									.getImage().getScaledInstance(getImginewh(), getImginewh(), Image.SCALE_SMOOTH)));
+			getgJLabels().get(i).setName(Integer.toString(champ));
+		}
+	}
+	
 	public void jlabelRefresh(int index, int champ, int choice)
 	{
 		if (choice == 0)

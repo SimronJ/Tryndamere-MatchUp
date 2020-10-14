@@ -38,7 +38,7 @@ public class Expertimentgui
 	private static ChampSelect champselect = new ChampSelect(getandsetchamps);
 	private static WhichChamp whichChamp = new WhichChamp();
 
-	private static JFrame frame = new JFrame();
+	private static JFrame frmChampinseight = new JFrame();
 	private static JPanel ctpMainBackground;
 	private static int imginewh = 70;
 
@@ -61,6 +61,7 @@ public class Expertimentgui
 	private static JLabel lblDiffLabel;
 	private static JLabel lblChampLabel;
 	private static JButton btnStopButton_1;
+	private static JButton btnResetButton;
 
 	/**
 	 * Launch the application.
@@ -98,13 +99,12 @@ public class Expertimentgui
 
 	public static void guiframe()
 	{
-		frame.setTitle("Simron GuideOutLoud");
-		frame.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Expertimentgui.class.getResource("/sim/resources/Tryndamere_Poro_Icon.png")));
+		frmChampinseight.setTitle("CounterOfTryndaInsight by Simron");
+		frmChampinseight.setIconImage(Toolkit.getDefaultToolkit().getImage(Expertimentgui.class.getResource("/sim/resources/Tryndamere_Poro_Icon.png")));
 		initComponents();
 		createEvents();
 		// getandsetchamps.jlabelUpdate();
-		frame.setVisible(true);
+		frmChampinseight.setVisible(true);
 	}
 
 	//////////////////////////////////////////////
@@ -123,12 +123,12 @@ public class Expertimentgui
 		};
 		worker.execute();
 
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 592, 491);
+		frmChampinseight.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frmChampinseight.setBounds(100, 100, 592, 491);
 		ctpMainBackground = new JPanel();
 		ctpMainBackground.setBackground(UIManager.getColor("Button.background"));
 		ctpMainBackground.setBorder(new EmptyBorder(5, 5, 5, 5));
-		frame.setContentPane(ctpMainBackground);
+		frmChampinseight.setContentPane(ctpMainBackground);
 
 		lblAllyPlayer5 = new JLabel("");
 		lblAllyPlayer5.setForeground(Color.BLACK);
@@ -218,14 +218,17 @@ public class Expertimentgui
 
 		lblDiffLabel = new JLabel("Difficulity");
 		lblDiffLabel.setForeground(Color.BLACK);
-		lblDiffLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblDiffLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 
 		lblChampLabel = new JLabel("Champion");
-		lblChampLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblChampLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
 
 		JButton btnReadButton = new JButton("Read it");
 
 		btnStopButton_1 = new JButton("Stop");
+		
+		btnResetButton = new JButton("Reset");
+
 
 		// lblNewLabel.setIcon(resizeble(lblNewLabel, "/sim/resources/none.jpg"));
 
@@ -247,21 +250,17 @@ public class Expertimentgui
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
 							.addGap(30)
 							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING, gl_ctpMainBackground.createSequentialGroup()
+									.addComponent(lblChampLabel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+									.addComponent(lblDiffLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_ctpMainBackground.createSequentialGroup()
 									.addComponent(btnReadButton)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(btnStopButton_1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-									.addGap(192))
-								.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
-									.addGroup(gl_ctpMainBackground.createSequentialGroup()
-										.addGap(117)
-										.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
-											.addComponent(lblChampLabel, GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-											.addGroup(gl_ctpMainBackground.createSequentialGroup()
-												.addComponent(lblDiffLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-												.addGap(2)))
-										.addGap(131))
-									.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)))
+									.addPreferredGap(ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+									.addComponent(btnResetButton))
+								.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
 							.addGap(38)
 							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblEnemyPlayer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
@@ -294,15 +293,17 @@ public class Expertimentgui
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
 							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_ctpMainBackground.createSequentialGroup()
-									.addComponent(lblChampLabel, GroupLayout.PREFERRED_SIZE, 19, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(lblDiffLabel)
-									.addGap(18)
-									.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+									.addGap(86)
+									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblDiffLabel)
+										.addComponent(lblChampLabel, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.BASELINE)
 										.addComponent(btnReadButton)
-										.addComponent(btnStopButton_1)))
+										.addComponent(btnStopButton_1)
+										.addComponent(btnResetButton)))
 								.addGroup(gl_ctpMainBackground.createSequentialGroup()
 									.addComponent(lblAllyText)
 									.addGap(8)
@@ -325,6 +326,13 @@ public class Expertimentgui
 	/////////////////////////////////////////////
 	private static void createEvents()
 	{
+		btnResetButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				getandsetchamps.resetBTN(0);
+			}
+		});
+		
 		lblEnemyPlayer1.addMouseListener(new MouseAdapter()
 		{
 			@Override
