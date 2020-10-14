@@ -120,13 +120,16 @@ public class Getandsetchamps extends Expertimentgui
 		this.enemyplayer5 = enemyplayer5;
 	}
 
-	volatile int i;
-
 	public ArrayList<Integer> getAllyarray()
 	{
 		return allyarray;
 	}
 
+	public ArrayList<Integer> getEnemyarray()
+	{
+		return enemyarray;
+	}
+	
 	public void jlabelRefresh(int index, int champ, int choice)
 	{
 		if (choice == 0)
@@ -146,7 +149,7 @@ public class Getandsetchamps extends Expertimentgui
 					.setIcon(new ImageIcon(new javax.swing.ImageIcon(
 							getClass().getResource("/sim/resources/champs/" + whichChamp.champname(champ) + ".png"))
 									.getImage().getScaledInstance(getImginewh(), getImginewh(), Image.SCALE_SMOOTH)));
-		} else if(choice ==  1)
+		} else if (choice == 1)
 		{
 			getgJLabels2().clear();
 			getgJLabels2().add(0, lblEnemyPlayer1);
@@ -167,6 +170,7 @@ public class Getandsetchamps extends Expertimentgui
 		}
 	}
 
+	volatile int i;
 	public void jlabelUpdate(int num)
 	{
 		i = 0;
@@ -181,7 +185,7 @@ public class Getandsetchamps extends Expertimentgui
 					i = 0;
 				}
 			});
-		} else if(num == 1)
+		} else if (num == 1)
 		{
 			i = 0;
 			enemyarray.listIterator().forEachRemaining(champ ->
@@ -196,8 +200,4 @@ public class Getandsetchamps extends Expertimentgui
 		}
 	}
 
-	public ArrayList<Integer> getEnemyarray()
-	{
-		return enemyarray;
-	}
 }

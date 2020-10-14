@@ -17,20 +17,21 @@ public class ChampSelect
 {
 	private WhichChamp whichChamp = new WhichChamp();
 	private Getandsetchamps getandsetchamps = new Getandsetchamps();
-	
+
 	private ClientWebSocket socket;
-	
-	ArrayList<Integer> allyclone= new ArrayList<Integer>();
+
+	ArrayList<Integer> allyclone = new ArrayList<Integer>();
 
 	public ChampSelect(Getandsetchamps getandsetchamps2)
 	{
-		 getandsetchamps = getandsetchamps2;
+		getandsetchamps = getandsetchamps2;
 	}
 
 	/**
 	 * Simple example showing how to receive websocket events from client
 	 */
 	volatile int tempchamp, tempchamp2;
+
 	public void lcuAPIChampSelect() throws Exception
 	{
 		// Initialize API
@@ -44,7 +45,8 @@ public class ChampSelect
 				try
 				{
 					// save current summoner display
-					String summonerName = api.executeGet("/lol-summoner/v1/current-summoner", LolSummonerSummoner.class).displayName;
+					String summonerName = api.executeGet("/lol-summoner/v1/current-summoner",
+							LolSummonerSummoner.class).displayName;
 
 					System.out.println("Current-SummonerDisplayName: " + summonerName);
 
@@ -61,16 +63,16 @@ public class ChampSelect
 								LolChampSelectChampSelectSession session = (LolChampSelectChampSelectSession) event
 										.getData();
 
-				
 								ListIterator<LolChampSelectChampSelectPlayerSelection> allyteam = session.myTeam
 										.listIterator();
 								allyteam.forEachRemaining(player ->
 								{
-									System.out.println(player.cellId + "Team:" + player.team + " Ally Champ:" + whichChamp.champname(player.championId));
-									
-									if(player.team == 1)
+									System.out.println(player.cellId + "Team:" + player.team + " Ally Champ:"
+											+ whichChamp.champname(player.championId));
+
+									if (player.team == 1)
 									{
-										if(tempchamp != player.championId)
+										if (tempchamp != player.championId)
 										{
 											getandsetchamps.getAllyarray().add(player.championId);
 											tempchamp = player.championId;
@@ -79,15 +81,16 @@ public class ChampSelect
 								});
 								getandsetchamps.jlabelUpdate(0);
 								getandsetchamps.getAllyarray().clear();
-								
+
 								ListIterator<LolChampSelectChampSelectPlayerSelection> enemyteam = session.theirTeam
 										.listIterator();
 								enemyteam.forEachRemaining(player ->
 								{
-									System.out.println(player.cellId + "Team:" + player.team + " Enemy Champ:" + whichChamp.champname(player.championId));
-									if(player.team == 2)
+									System.out.println(player.cellId + "Team:" + player.team + " Enemy Champ:"
+											+ whichChamp.champname(player.championId));
+									if (player.team == 2)
 									{
-										if(tempchamp2 != player.championId)
+										if (tempchamp2 != player.championId)
 										{
 											getandsetchamps.getEnemyarray().add(player.championId);
 											tempchamp2 = player.championId;
