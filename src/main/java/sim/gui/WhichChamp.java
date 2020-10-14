@@ -203,8 +203,8 @@ public class WhichChamp
 	private List<String[]> allRows;
 	public  String[] getChampFromTSV(String s)
 	{
-		Tts tts = new Tts();
-		String fileinput = tts.getClass().getResource("/sim/resources/TryndaUpdate101720.tsv").getPath();
+
+		String fileinput = this.getClass().getResource("/sim/resources/TryndaUpdate101720.tsv").getPath();
 	
 		TsvParserSettings settings = new TsvParserSettings();
 		settings.getFormat().setLineSeparator("\n");
