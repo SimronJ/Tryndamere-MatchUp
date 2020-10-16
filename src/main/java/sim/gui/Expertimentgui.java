@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -31,6 +32,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextArea;
+import javax.swing.JComboBox;
 
 public class Expertimentgui
 {
@@ -62,6 +64,9 @@ public class Expertimentgui
 	private static JLabel lblChampLabel;
 	private static JButton btnStopButton_1;
 	private static JButton btnResetButton;
+	public  static JComboBox<Object> comboBoxPlayerRunes;
+	public  static JComboBox<Object> comboBoxPreMadeRunes;
+	private static JButton btnSetRunes;
 
 	/**
 	 * Launch the application.
@@ -228,8 +233,13 @@ public class Expertimentgui
 		btnStopButton_1 = new JButton("Stop");
 		
 		btnResetButton = new JButton("Reset");
-
-
+		
+		comboBoxPlayerRunes = new JComboBox<Object>();
+		
+		comboBoxPreMadeRunes = new JComboBox<>(new String[] {"Conqueror Runes", "Fleet Footwork Runes", "Lethal Tempo Runes", "Grasp Runes"});
+		
+		btnSetRunes = new JButton("Set Rune");
+		
 		// lblNewLabel.setIcon(resizeble(lblNewLabel, "/sim/resources/none.jpg"));
 
 		GroupLayout gl_ctpMainBackground = new GroupLayout(ctpMainBackground);
@@ -249,18 +259,27 @@ public class Expertimentgui
 					.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
 							.addGap(30)
-							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_ctpMainBackground.createSequentialGroup()
+							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_ctpMainBackground.createSequentialGroup()
 									.addComponent(lblChampLabel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
 									.addComponent(lblDiffLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_ctpMainBackground.createSequentialGroup()
-									.addComponent(btnReadButton)
+								.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+								.addGroup(Alignment.LEADING, gl_ctpMainBackground.createSequentialGroup()
+									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(comboBoxPlayerRunes, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnReadButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnStopButton_1, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-									.addComponent(btnResetButton))
-								.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
+									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(comboBoxPreMadeRunes, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnStopButton_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_ctpMainBackground.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+											.addComponent(btnResetButton))
+										.addGroup(gl_ctpMainBackground.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnSetRunes)))))
 							.addGap(38)
 							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblEnemyPlayer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
@@ -315,7 +334,12 @@ public class Expertimentgui
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(lblAllyPlayer4, GroupLayout.PREFERRED_SIZE, 71, Short.MAX_VALUE)))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblAllyPlayer5, GroupLayout.PREFERRED_SIZE, 69, Short.MAX_VALUE)))
+							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.BASELINE)
+									.addComponent(comboBoxPlayerRunes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(comboBoxPreMadeRunes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addComponent(btnSetRunes))
+								.addComponent(lblAllyPlayer5, GroupLayout.PREFERRED_SIZE, 69, Short.MAX_VALUE))))
 					.addContainerGap())
 		);
 		ctpMainBackground.setLayout(gl_ctpMainBackground);
@@ -338,7 +362,8 @@ public class Expertimentgui
 			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				String[] tem;
+				String[] tem = {"Unknown", "Unknown", "Unknown"};
+				
 				if (lblEnemyPlayer1.getName() == null)
 				{
 					tem = whichChamp.getChampFromTSV("none");
@@ -346,39 +371,9 @@ public class Expertimentgui
 				{
 					tem = whichChamp.getChampFromTSV(lblEnemyPlayer1.getName());
 				}
-				lblChampLabel.setText(tem[0]);
-				if (tem[1].equals("Easy"))
-				{
-					lblDiffLabel.setForeground(Color.GREEN);
-				}
-				;
-				if (tem[1].equals("Medium"))
-				{
-					lblDiffLabel.setForeground(Color.BLUE);
-				}
-				;
-				if (tem[1].equals("Hard"))
-				{
-					lblDiffLabel.setForeground(Color.RED);
-				}
-				;
-				if (tem[1].equals("INTeresting"))
-				{
-					lblDiffLabel.setForeground(Color.MAGENTA);
-				}
-				;
-				if (tem[1].equals("Trolling"))
-				{
-					lblDiffLabel.setForeground(Color.CYAN);
-				}
-				;
-				if (tem[1].equals("Unknown"))
-				{
-					lblDiffLabel.setForeground(Color.DARK_GRAY);
-				}
-				;
-				lblDiffLabel.setText(tem[1]);
-				champTextPane.setText(tem[2]);
+				setChampNameDifficulityDetail(tem);
+				autoSelectRune(tem[2]);
+				
 			}
 		});
 
@@ -395,39 +390,8 @@ public class Expertimentgui
 				{
 					tem = whichChamp.getChampFromTSV(lblEnemyPlayer2.getName());
 				}
-				lblChampLabel.setText(tem[0]);
-				if (tem[1].equals("Easy"))
-				{
-					lblDiffLabel.setForeground(Color.GREEN);
-				}
-				;
-				if (tem[1].equals("Medium"))
-				{
-					lblDiffLabel.setForeground(Color.BLUE);
-				}
-				;
-				if (tem[1].equals("Hard"))
-				{
-					lblDiffLabel.setForeground(Color.RED);
-				}
-				;
-				if (tem[1].equals("INTeresting"))
-				{
-					lblDiffLabel.setForeground(Color.MAGENTA);
-				}
-				;
-				if (tem[1].equals("Trolling"))
-				{
-					lblDiffLabel.setForeground(Color.CYAN);
-				}
-				;
-				if (tem[1].equals("Unknown"))
-				{
-					lblDiffLabel.setForeground(Color.DARK_GRAY);
-				}
-				;
-				lblDiffLabel.setText(tem[1]);
-				champTextPane.setText(tem[2]);
+				setChampNameDifficulityDetail(tem);
+				autoSelectRune(tem[2]);
 			}
 		});
 
@@ -444,39 +408,9 @@ public class Expertimentgui
 				{
 					tem = whichChamp.getChampFromTSV(lblEnemyPlayer3.getName());
 				}
-				lblChampLabel.setText(tem[0]);
-				if (tem[1].equals("Easy"))
-				{
-					lblDiffLabel.setForeground(Color.GREEN);
-				}
-				;
-				if (tem[1].equals("Medium"))
-				{
-					lblDiffLabel.setForeground(Color.BLUE);
-				}
-				;
-				if (tem[1].equals("Hard"))
-				{
-					lblDiffLabel.setForeground(Color.RED);
-				}
-				;
-				if (tem[1].equals("INTeresting"))
-				{
-					lblDiffLabel.setForeground(Color.MAGENTA);
-				}
-				;
-				if (tem[1].equals("Trolling"))
-				{
-					lblDiffLabel.setForeground(Color.CYAN);
-				}
-				;
-				if (tem[1].equals("Unknown"))
-				{
-					lblDiffLabel.setForeground(Color.DARK_GRAY);
-				}
-				;
-				lblDiffLabel.setText(tem[1]);
-				champTextPane.setText(tem[2]);
+				
+				setChampNameDifficulityDetail(tem);
+				autoSelectRune(tem[2]);
 			}
 		});
 
@@ -493,39 +427,9 @@ public class Expertimentgui
 				{
 					tem = whichChamp.getChampFromTSV(lblEnemyPlayer4.getName());
 				}
-				lblChampLabel.setText(tem[0]);
-				if (tem[1].equals("Easy"))
-				{
-					lblDiffLabel.setForeground(Color.GREEN);
-				}
-				;
-				if (tem[1].equals("Medium"))
-				{
-					lblDiffLabel.setForeground(Color.BLUE);
-				}
-				;
-				if (tem[1].equals("Hard"))
-				{
-					lblDiffLabel.setForeground(Color.RED);
-				}
-				;
-				if (tem[1].equals("INTeresting"))
-				{
-					lblDiffLabel.setForeground(Color.MAGENTA);
-				}
-				;
-				if (tem[1].equals("Trolling"))
-				{
-					lblDiffLabel.setForeground(Color.CYAN);
-				}
-				;
-				if (tem[1].equals("Unknown"))
-				{
-					lblDiffLabel.setForeground(Color.DARK_GRAY);
-				}
-				;
-				lblDiffLabel.setText(tem[1]);
-				champTextPane.setText(tem[2]);
+				
+				setChampNameDifficulityDetail(tem);
+				autoSelectRune(tem[2]);
 			}
 		});
 
@@ -542,62 +446,89 @@ public class Expertimentgui
 				{
 					tem = whichChamp.getChampFromTSV(lblEnemyPlayer5.getName());
 				}
-				lblChampLabel.setText(tem[0]);
-				if (tem[1].equals("Easy"))
-				{
-					lblDiffLabel.setForeground(Color.GREEN);
-				}
-				;
-				if (tem[1].equals("Medium"))
-				{
-					lblDiffLabel.setForeground(Color.BLUE);
-				}
-				;
-				if (tem[1].equals("Hard"))
-				{
-					lblDiffLabel.setForeground(Color.RED);
-				}
-				;
-				if (tem[1].equals("INTeresting"))
-				{
-					lblDiffLabel.setForeground(Color.MAGENTA);
-				}
-				;
-				if (tem[1].equals("Trolling"))
-				{
-					lblDiffLabel.setForeground(Color.CYAN);
-				}
-				;
-				if (tem[1].equals("Unknown"))
-				{
-					lblDiffLabel.setForeground(Color.DARK_GRAY);
-				}
-				;
-				lblDiffLabel.setText(tem[1]);
-				champTextPane.setText(tem[2]);
+				
+				setChampNameDifficulityDetail(tem);
+				autoSelectRune(tem[2]);
+			}
+		});
+		
+		btnSetRunes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SwingWorker<Void, Void> worker3 = new SwingWorker<Void, Void>(){
+					@Override
+					protected Void doInBackground() throws Exception {
+						champselect.setrunes(comboBoxPlayerRunes.getSelectedIndex(), (String) comboBoxPreMadeRunes.getSelectedItem());
+						return null;
+					}
+				};
+				worker3.execute();
 			}
 		});
 	}
+	
 
-	private ImageIcon resizeble(JLabel label, String ImginePath)
+	public static void setChampNameDifficulityDetail(String[] tem)
 	{
-		// Read the picture as a BufferedImage
-		BufferedImage img = null;
-		try
+		lblChampLabel.setText(tem[0]);
+		if (tem[1].equals("Easy"))
 		{
-			img = ImageIO.read(Expertimentgui.class.getResource(ImginePath));
-		} catch (IOException e)
-		{
-			e.printStackTrace();
+			lblDiffLabel.setForeground(Color.GREEN);
 		}
-
-		// Resize the BufferedImage
-		Image dimg = img.getScaledInstance(70, 70, Image.SCALE_SMOOTH);
-
-		// Create an ImageIcon
-		ImageIcon imageIcon = new ImageIcon(dimg);
-		return imageIcon;
-
+		;
+		if (tem[1].equals("Medium"))
+		{
+			lblDiffLabel.setForeground(Color.BLUE);
+		}
+		;
+		if (tem[1].equals("Hard"))
+		{
+			lblDiffLabel.setForeground(Color.RED);
+		}
+		;
+		if (tem[1].equals("INTeresting"))
+		{
+			lblDiffLabel.setForeground(Color.MAGENTA);
+		}
+		;
+		if (tem[1].equals("Trolling"))
+		{
+			lblDiffLabel.setForeground(Color.CYAN);
+		}
+		;
+		if (tem[1].equals("Unknown"))
+		{
+			lblDiffLabel.setForeground(Color.DARK_GRAY);
+		}
+		;
+		lblDiffLabel.setText(tem[1]);
+		champTextPane.setText(tem[2]);
+	}
+	
+	public static void autoSelectRune(String words)
+	{
+		String split[] = words.split(" ", 2);
+		String firstw = split[0];
+		
+		if(!firstw.equals("Unknown"))
+		{
+			if (firstw.equals("Conqueror"))
+			{
+				comboBoxPreMadeRunes.setSelectedItem("Conqueror Runes");
+			}
+			else if (firstw.equals("Lethal"))
+			{
+				comboBoxPreMadeRunes.setSelectedItem("Lethal Tempo Runes");
+			}
+			else if (firstw.equals("Fleet"))
+			{
+				comboBoxPreMadeRunes.setSelectedItem("Fleet Footwork Runes");
+			}
+			else if (firstw.equals("Grasp"))
+			{
+				comboBoxPreMadeRunes.setSelectedItem("Grasp Runes");
+			}
+		}
 	}
 
 	public int getImginewh()

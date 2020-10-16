@@ -234,6 +234,11 @@ public class WhichChamp
 				if(s.equals("ChoGath")) {
 					if(tempch[0].equals("Cho' Gath")) {returnch = allRows.get(i); System.out.println("Found! " + tempch[0]);}
 				}
+				if (s.equals("DrMundo"))
+				{
+					if(tempch[0].equals("Dr. Mundo")) {returnch = allRows.get(i); System.out.println("Found! " + tempch[0]);}
+				}
+				
 				if(s.length() >= 6)
 				{
 					if (s.subSequence(0, 4).equals(tempch[0].subSequence(0, 4)))

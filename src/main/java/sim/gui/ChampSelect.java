@@ -7,10 +7,16 @@ import com.stirante.lolclient.ClientWebSocket;
 import examples.pojo.Player;
 import generated.LolChampSelectChampSelectPlayerSelection;
 import generated.LolChampSelectChampSelectSession;
+import generated.LolPerksPerkPageResource;
 import generated.LolSummonerSummoner;
+import generated.cookie;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ListIterator;
 
 public class ChampSelect
@@ -21,6 +27,7 @@ public class ChampSelect
 	private ClientWebSocket socket;
 
 	ArrayList<Integer> allyclone = new ArrayList<Integer>();
+	private LolPerksPerkPageResource[] runePages  = null;
 
 	public ChampSelect(Getandsetchamps getandsetchamps2)
 	{
@@ -49,6 +56,30 @@ public class ChampSelect
 							LolSummonerSummoner.class).displayName;
 
 					System.out.println("Current-SummonerDisplayName: " + summonerName);
+					
+					//LolPerksPerkPageResource conqueror = new LolPerksPerkPageResource();
+					
+					try
+					{
+						 runePages = api.executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
+						for (int i = 0; i < runePages.length; i++)
+						{
+							if (runePages[i].isEditable)
+							{
+								System.out.println(i+ ": " + runePages[i].name);
+//								System.out.println(runePages[i].order);
+//								System.out.println(runePages[i].primaryStyleId); 
+//								System.out.println(runePages[i].selectedPerkIds);
+//								System.out.println(runePages[i].subStyleId);
+								getandsetchamps.comboxUpdate(runePages[i].name);
+							}
+						}
+
+					} catch (IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 					// open web socket
 					socket = api.openWebSocket();
@@ -128,4 +159,86 @@ public class ChampSelect
 		socket.close();
 	}
 
+	public void setrunes(int getRunePage, String typeOfRune)
+	{
+		LolPerksPerkPageResource modifiedRune = runePages[getRunePage];
+		
+		List<Integer> conPerkIds = Arrays.asList(8010, 9111, 9103, 8299, 8275, 8210, 5005, 5008, 5002);
+		List<Integer> lethalPerkIds = Arrays.asList(8008, 9111, 9103, 8299, 8275, 8210, 5005, 5008, 5002);
+		List<Integer> fleetPerkIds = Arrays.asList(8021, 9111, 9104, 8299, 8446, 8444, 5005, 5008, 5002);
+		List<Integer> grapsPerkIds = Arrays.asList(8437, 8446, 8444, 8453, 9111, 9104, 5005, 5008, 5002);
+		
+		if(typeOfRune.equalsIgnoreCase("Lethal Tempo Runes"))
+		{
+			modifiedRune.name = "Trynd Lethal: SimGUI";
+			modifiedRune.primaryStyleId = 8000;
+			modifiedRune.selectedPerkIds = lethalPerkIds;
+			modifiedRune.subStyleId = 8400;
+		}
+		if(typeOfRune.equalsIgnoreCase("Fleet Footwork Runes"))
+		{
+			modifiedRune.name = "Trynd Fleet: SimGUI";
+			modifiedRune.primaryStyleId = 8000;
+			modifiedRune.selectedPerkIds = fleetPerkIds;
+			modifiedRune.subStyleId = 8400;
+		}
+		if(typeOfRune.equalsIgnoreCase("Conqueror Runes"))
+		{
+			modifiedRune.name = "Trynd Conqueror: SimGUI";
+			modifiedRune.primaryStyleId = 8000;
+			modifiedRune.selectedPerkIds = conPerkIds;
+			modifiedRune.subStyleId = 8200;
+		}
+		if(typeOfRune.equalsIgnoreCase("Grasp Runes"))
+		{
+			modifiedRune.name = "Trynd Grasp: SimGUI";
+			modifiedRune.primaryStyleId = 8000;
+			modifiedRune.selectedPerkIds = grapsPerkIds;
+			modifiedRune.subStyleId = 8400;
+		}
+		
+		// Initialize API
+				ClientApi api = new ClientApi();
+				api.addClientConnectionListener(new ClientConnectionListener()
+				{
+					@Override
+					public void onClientConnected()
+					{
+						try
+						{
+							api.executePut("/lol-perks/v1/pages/" + runePages[getRunePage].id, modifiedRune);
+							System.out.println("Set the Rune!");
+							
+							runePages = api.executeGet("/lol-perks/v1/pages", LolPerksPerkPageResource[].class);
+							getandsetchamps.deleteComboxItem();
+							for (int i = 0; i < runePages.length; i++)
+							{
+								if (runePages[i].isEditable)
+								{
+									getandsetchamps.comboxUpdate(runePages[i].name);
+								}
+							}
+						} catch (IOException e)
+						{
+							e.printStackTrace();
+						}
+					}
+
+					@Override
+					public void onClientDisconnected()
+					{
+						System.out.println("Client disconnected");
+					}
+				});
+				// close socket when user enters something into console
+				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+				try
+				{
+					reader.readLine();
+				} catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				api.stop();
+	}
 }
