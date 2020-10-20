@@ -231,6 +231,10 @@ public class WhichChamp
 			case 5:  if (tempch[0].equals(s)){returnch = allRows.get(i); System.out.println("Found it! " + tempch[0]);} break;
 
 			default: 
+				if(s.equals("LeeSin"))
+				{
+					if(tempch[0].equals("Lee Sin")) {returnch = allRows.get(i); System.out.println("Found! " + tempch[0]);}
+				}
 				if(s.equals("ChoGath")) {
 					if(tempch[0].equals("Cho' Gath")) {returnch = allRows.get(i); System.out.println("Found! " + tempch[0]);}
 				}

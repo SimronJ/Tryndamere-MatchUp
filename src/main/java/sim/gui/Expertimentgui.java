@@ -24,6 +24,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
@@ -129,7 +130,7 @@ public class Expertimentgui
 		worker.execute();
 
 		frmChampinseight.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frmChampinseight.setBounds(100, 100, 592, 491);
+		frmChampinseight.setBounds(100, 100, 618, 476);
 		ctpMainBackground = new JPanel();
 		ctpMainBackground.setBackground(UIManager.getColor("Button.background"));
 		ctpMainBackground.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -235,6 +236,7 @@ public class Expertimentgui
 		btnResetButton = new JButton("Reset");
 		
 		comboBoxPlayerRunes = new JComboBox<Object>();
+		comboBoxPlayerRunes.setMaximumSize(new Dimension(10, 10));
 		
 		comboBoxPreMadeRunes = new JComboBox<>(new String[] {"Conqueror Runes", "Fleet Footwork Runes", "Lethal Tempo Runes", "Grasp Runes"});
 		
@@ -256,40 +258,36 @@ public class Expertimentgui
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
 							.addGap(6)
 							.addComponent(lblAllyText)))
-					.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
+					.addGap(30)
+					.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
-							.addGap(30)
-							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
-								.addGroup(gl_ctpMainBackground.createSequentialGroup()
-									.addComponent(lblChampLabel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-									.addComponent(lblDiffLabel, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE))
-								.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-								.addGroup(Alignment.LEADING, gl_ctpMainBackground.createSequentialGroup()
-									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(comboBoxPlayerRunes, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(btnReadButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(comboBoxPreMadeRunes, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(btnStopButton_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
-									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_ctpMainBackground.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-											.addComponent(btnResetButton))
-										.addGroup(gl_ctpMainBackground.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(btnSetRunes)))))
-							.addGap(38)
-							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblEnemyPlayer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-								.addComponent(lblEnemyPlayer2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-								.addComponent(lblEnemyPlayer3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-								.addComponent(lblEnemyPlayer4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-								.addComponent(lblEnemyPlayer5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
+							.addComponent(lblChampLabel, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblDiffLabel, GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+						.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
+							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(comboBoxPlayerRunes, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnReadButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblEnemyTeam)))
+							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(comboBoxPreMadeRunes, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnStopButton_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+							.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_ctpMainBackground.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+									.addComponent(btnResetButton))
+								.addGroup(gl_ctpMainBackground.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnSetRunes)))))
+					.addGap(38)
+					.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblEnemyPlayer1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+						.addComponent(lblEnemyPlayer2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+						.addComponent(lblEnemyPlayer3, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+						.addComponent(lblEnemyPlayer4, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+						.addComponent(lblEnemyPlayer5, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+						.addComponent(lblEnemyTeam))
 					.addContainerGap())
 		);
 		gl_ctpMainBackground.setVerticalGroup(
@@ -298,6 +296,7 @@ public class Expertimentgui
 					.addGap(22)
 					.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_ctpMainBackground.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblEnemyTeam, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblEnemyPlayer1, GroupLayout.PREFERRED_SIZE, 67, Short.MAX_VALUE)
@@ -314,8 +313,8 @@ public class Expertimentgui
 								.addGroup(gl_ctpMainBackground.createSequentialGroup()
 									.addGap(86)
 									.addGroup(gl_ctpMainBackground.createParallelGroup(Alignment.BASELINE)
-										.addComponent(lblDiffLabel)
-										.addComponent(lblChampLabel, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+										.addComponent(lblChampLabel, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+										.addComponent(lblDiffLabel))
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(champTextPaneSP, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)

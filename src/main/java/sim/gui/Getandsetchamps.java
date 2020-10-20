@@ -244,6 +244,13 @@ public class Getandsetchamps extends Expertimentgui
 		comboBoxPlayerRunes.addItem(item);
 	}
 	
+	public void comboBoxPlayerRunesFocus(String item)
+	{
+		//comboBoxPlayerRunes.requestFocus();
+		//comboBoxPlayerRunes.showPopup();
+		comboBoxPlayerRunes.setSelectedItem(item);
+	}
+	
 	public void deleteComboxItem()
 	{
 		comboBoxPlayerRunes.removeAllItems();
