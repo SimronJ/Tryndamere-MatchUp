@@ -6,7 +6,7 @@ Give you heads up on the match up of Tryndamere, and Auto select the runes that 
 
 # Setup
 - Need to have [Java](https://www.java.com/en/download/) to use this application.
-- Tested on Windows but not sure about Mac and Linix OS (Let me know by making a post on [Issue](https://github.com/SimronJ/CounterOfTryndaInsight/issues))
+- Tested on Windows but not sure about Mac and Linux OS (Let me know by making a post on [Issue](https://github.com/SimronJ/CounterOfTryndaInsight/issues))
 - Head over to [Release](https://github.com/SimronJ/CounterOfTryndaInsight/releases/tag/1.0) or click the [download](https://github.com/SimronJ/CounterOfTryndaInsight/releases/download/1.0/TryndaMatchUpGui.jar)
 - As for the bug head over to [Issue](https://github.com/SimronJ/CounterOfTryndaInsight/issues) tab to report it.
 
