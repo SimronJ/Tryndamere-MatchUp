@@ -4,6 +4,12 @@ Give you heads up on the match up of Tryndamere, and Auto select the runes that 
 ## ShowCase
 ![CounterOfTryndaInsight - Animated gif demo](demo/demo.gif)
 
+# Setup
+- Need to have [Java](https://www.java.com/en/download/) to use this application.
+- Tested on Windows but not sure about Mac and Linix OS (Let me know by making a post on [Issue](https://github.com/SimronJ/CounterOfTryndaInsight/issues))
+- Head over to [Release](https://github.com/SimronJ/CounterOfTryndaInsight/releases/tag/1.0) or click the [download](https://github.com/SimronJ/CounterOfTryndaInsight/releases/download/1.0/TryndaMatchUpGui.jar)
+- As for the bug head over to [Issue](https://github.com/SimronJ/CounterOfTryndaInsight/issues) tab to report it.
+
 ## Description
 It's a Java swing or gui app that connects with league client api to get the live champ select display on the screen as you can see from the showcase. Left side is your team champs and the right side is the enemy champs which depending on what matchup you going against you click on it to get information about it. It also auto select the rune that best match the champ you going against.
 
