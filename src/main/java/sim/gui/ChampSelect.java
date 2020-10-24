@@ -43,6 +43,11 @@ public class ChampSelect
 	{
 		// Initialize API
 		ClientApi api = new ClientApi();
+		//Check if user is logged in
+//        if (!api.isAuthorized()) {
+//            System.out.println("Not logged in!");
+//        }
+//        
 		api.addClientConnectionListener(new ClientConnectionListener()
 		{
 			@Override
@@ -52,11 +57,6 @@ public class ChampSelect
 				try
 				{
 					
-					//Check if user is logged in
-                    if (!api.isAuthorized()) {
-                        System.out.println("Not logged in!");
-                        return;
-                    }
 					
 					// save current summoner display
 					String summonerName = api.executeGet("/lol-summoner/v1/current-summoner",
