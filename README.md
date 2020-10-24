@@ -2,7 +2,7 @@
 Give you heads up on the match up of Tryndamere, and Auto select the runes that best match the champ you going against.
 
 ## ShowCase
-![image](https://i.imgur.com/TOPPKvq.png)
+![CounterOfTryndaInsight - Animated gif demo](demo/demo.gif)
 
 ## Description
 It's a Java swing or gui app that connects with league client api to get the live champ select display on the screen as you can see from the picture. Left side is your team champs and the right side is the enemy champs which depending on what matchup you going against you click on it to get information about it. It also auto select the rune that best match the champ you going against.
