@@ -4,13 +4,10 @@ import com.stirante.lolclient.ClientApi;
 import com.stirante.lolclient.ClientConnectionListener;
 import com.stirante.lolclient.ClientWebSocket;
 
-import examples.pojo.Player;
 import generated.LolChampSelectChampSelectPlayerSelection;
 import generated.LolChampSelectChampSelectSession;
 import generated.LolPerksPerkPageResource;
 import generated.LolSummonerSummoner;
-import generated.cookie;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

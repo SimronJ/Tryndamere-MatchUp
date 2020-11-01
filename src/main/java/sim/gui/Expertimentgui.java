@@ -9,12 +9,8 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -529,7 +525,7 @@ public class Expertimentgui
 			}
 		}
 	}
-
+	
 	public int getImginewh()
 	{
 		return imginewh;

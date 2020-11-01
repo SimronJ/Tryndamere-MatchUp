@@ -13,10 +13,6 @@ public class Getandsetchamps extends Expertimentgui
 			allyplayer5 = "none";
 	private String enemyplayer1 = "none", enemyplayer2 = "none", enemyplayer3 = "none", enemyplayer4 = "none",
 			enemyplayer5 = "none";
-	private String[] allyplayerArray =
-	{ allyplayer1, allyplayer2, allyplayer3, allyplayer4, allyplayer5, enemyplayer1, enemyplayer2, enemyplayer3,
-			enemyplayer4, enemyplayer5 };
-
 	private WhichChamp whichChamp = new WhichChamp();
 
 	public String getAllyplayer1()

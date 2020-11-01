@@ -1,8 +1,9 @@
 package sim.gui;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.univocity.parsers.tsv.TsvParser;
@@ -204,21 +205,15 @@ public class WhichChamp
 	public  String[] getChampFromTSV(String s)
 	{
 
-		String fileinput = this.getClass().getResource("/sim/resources/TryndaUpdate101720.tsv").getPath();
-	
 		TsvParserSettings settings = new TsvParserSettings();
 		settings.getFormat().setLineSeparator("\n");
 		TsvParser parser = new TsvParser(settings);
 		
-		// parses all rows in one go.
-		try
-		{
-			allRows = parser.parseAll(new FileReader(fileinput));
-			
-		} catch (FileNotFoundException e)
-		{
-			e.printStackTrace();
-		}
+		InputStream in = getClass().getResourceAsStream("/sim/resources/TryndaUpdate101720.tsv"); 
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		
+		allRows = parser.parseAll(new BufferedReader(reader));
+		
 		String[] tempch = null, returnch = {"Unknown", "Unknown", "Unknown"} ;
 		for (int i = 0; i < allRows.size(); i++)
 		{
