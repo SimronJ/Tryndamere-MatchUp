@@ -169,6 +169,7 @@ public class ChampSelect
 		List<Integer> lethalPerkIds = Arrays.asList(8008, 9111, 9103, 8299, 8275, 8210, 5005, 5008, 5002);
 		List<Integer> fleetPerkIds = Arrays.asList(8021, 9111, 9104, 8299, 8446, 8444, 5005, 5008, 5002);
 		List<Integer> grapsPerkIds = Arrays.asList(8437, 8446, 8444, 8453, 9111, 9104, 5005, 5008, 5002);
+		List<Integer> phasePerkIds = Arrays.asList(8230, 8275, 8234, 8236, 9104, 8299, 5005, 5008, 5003);
 		
 		// Initialize API
 				ClientApi api = new ClientApi();
@@ -189,7 +190,13 @@ public class ChampSelect
 							}
 							
 							LolPerksPerkPageResource modifiedRune = runePages[getRunePage];
-							
+							if(typeOfRune.equalsIgnoreCase("Phase Rush Runes"))
+							{
+								modifiedRune.name = "Trynd Phase: SimGUI";
+								modifiedRune.primaryStyleId = 8200;
+								modifiedRune.selectedPerkIds = phasePerkIds;
+								modifiedRune.subStyleId = 8000;
+							}
 							if(typeOfRune.equalsIgnoreCase("Lethal Tempo Runes"))
 							{
 								modifiedRune.name = "Trynd Lethal: SimGUI";

@@ -234,7 +234,7 @@ public class Expertimentgui
 		comboBoxPlayerRunes = new JComboBox<Object>();
 		comboBoxPlayerRunes.setMaximumSize(new Dimension(10, 10));
 		
-		comboBoxPreMadeRunes = new JComboBox<>(new String[] {"Conqueror Runes", "Fleet Footwork Runes", "Lethal Tempo Runes", "Grasp Runes"});
+		comboBoxPreMadeRunes = new JComboBox<>(new String[] {"Conqueror Runes", "Fleet Footwork Runes", "Lethal Tempo Runes", "Grasp Runes", "Phase Rush Runes"});
 		
 		btnSetRunes = new JButton("Set Rune");
 		
@@ -507,6 +507,7 @@ public class Expertimentgui
 		
 		if(!firstw.equals("Unknown"))
 		{
+			//Phase Rush Runes
 			if (firstw.equals("Conqueror"))
 			{
 				comboBoxPreMadeRunes.setSelectedItem("Conqueror Runes");

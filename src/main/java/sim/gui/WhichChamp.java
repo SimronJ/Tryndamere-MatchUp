@@ -211,8 +211,7 @@ public class WhichChamp
 		
 		InputStream in = getClass().getResourceAsStream("/sim/resources/TryndaUpdate101720.tsv"); 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		
-		allRows = parser.parseAll(new BufferedReader(reader));
+		allRows = parser.parseAll(reader);
 		
 		String[] tempch = null, returnch = {"Unknown", "Unknown", "Unknown"} ;
 		for (int i = 0; i < allRows.size(); i++)
